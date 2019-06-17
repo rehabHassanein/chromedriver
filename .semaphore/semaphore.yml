@@ -44,6 +44,8 @@ blocks:
      jobs:
      - name: Download chromdriver
        commands:
-         - wget https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip -O /root/.webdriver/chromedriver
-         - chromedriver --v
+         - mkdir -p /root/.webdriver
+         - wget https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip -O /root/.webdriver/chromedriver.zip
+         - pushd /root/.webdriver/ && ./chromedriver.zip
+         - chromedriver -v
          - /root/webdriver/chromedriver -v
