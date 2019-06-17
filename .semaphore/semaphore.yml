@@ -15,7 +15,9 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-    containers:
+  containers:
+    - name: main
+      image: semaphoreci/ruby:2.6.1
     - name: postgres
       image: postgres:11.1-alpine
 
