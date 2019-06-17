@@ -73,10 +73,10 @@ agent:
           value: "false"
 blocks:
  - name: Install dependecies
-    task:
-      jobs:
-      - name: Download chromdriver
-        commands:
-          - wget https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip -O /root/.webdriver/chromedriver
-          - chromedriver --v
-          - /root/webdriver/chromedriver -v
+   task:
+     jobs:
+     - name: Download chromdriver
+       commands:
+         - wget https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip -O /root/.webdriver/chromedriver
+         - chromedriver --v
+         - /root/webdriver/chromedriver -v
