@@ -1,43 +1,16 @@
-# Use the latest stable version of Semaphore 2.0 YML syntax:
 version: v1.0
 
-# Name your pipeline. In case you connect multiple pipelines with promotions,
-# the name will help you differentiate between, for example, a CI build phase
-# and delivery phases.
 name: Semaphore Chromedriver Pipeline 
 
-# An agent defines the environment in which your code runs.
-# It is a combination of one of available machine types and operating
-# system images.
-# See https://docs.semaphoreci.com/article/20-machine-types
-# and https://docs.semaphoreci.com/article/32-ubuntu-1804-image
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu1804
+    #os_image: ubuntu1804
+
   containers:
     - name: main
       image: semaphoreci/ruby:2.6.1
-    - name: postgres
-      image: postgres:11.1-alpine
 
-    - name: memcached
-      image: memcached:1.4-alpine
-
-    - name: redis
-      image: redis:3.2-alpine
-
-    - name: elasticsearch
-      image: elasticsearch:5.6.16-alpine
-      env_vars:
-        - name: discovery.type
-          value: "single-node"
-        - name: bootstrap.memory_lock
-          value: "true"
-        - name: ES_JAVA_OPTS
-          value: "-Xms512m -Xmx512m"
-        - name: xpack.security.enabled
-          value: "false"
 blocks:
  - name: Install dependecies
    task:
@@ -46,6 +19,6 @@ blocks:
        commands:
          - mkdir -p /root/.webdriver
          - wget https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip -O /root/.webdriver/chromedriver.zip
-         - pushd /root/.webdriver/ && ./chromedriver.zip
+         - pushd /root/.webdriver/ && unzip ./chromedriver.zip
          - chromedriver -v
-         - /root/webdriver/chromedriver -v
+         - /root/.webdriver/chromedriver -v
