@@ -15,42 +15,7 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-    # Set environment variables that your project requires.
-    # See https://docs.semaphoreci.com/article/66-environment-variables-and-secrets
-    env_vars:
-      - name: SEMAPHORE_THREAD_COUNT
-        value: "1"
-      - name: CHROMEDRIVER_VERSION
-        value: "2.46"
-      - name: CLIVER_NO_VERIFY # Cliver detects the PhantomJS version incorrectly in Debian Stretch; disables version checks
-        value: "1"
-      - name: RAILS_ENV
-        value: "test"
-      - name: CI
-        value: "true"
-      - name: HOME
-        value: "/root"
-      - name: WEBAPP_INTERNAL_HOSTNAME
-        value: "web"
-      - name: PGHOST
-        value: "postgres"
-      - name: REDIS_HOST
-        value: "redis:6379"
-      - name: ELASTICSEARCH_HOST
-        value: "http://elasticsearch:9200/"
-      - name: MEMCACHED_IP
-        value: "memcached"
-      - name: REDIS
-        value: "1"
-      - name: NO_INLINE
-        value: "1"
-      - name: MEMCACHED
-        value: "1"
-      - name: QUEUE
-        value: "*"
-      - name: BOOTSNAP
-        value: "1" 
-  containers:
+    containers:
     - name: postgres
       image: postgres:11.1-alpine
 
